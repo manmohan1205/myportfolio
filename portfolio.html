@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manmohan Sharma | Prompt Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    padding: 40px 20px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 3rem;
+    color: #fff;
+  }
+  header p {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: #ddd;
+  }
+  nav {
+    background: #1a1a1a;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  nav ul li a {
+    color: #00feba;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: #5b548a;
+  }
+  section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+  }
+  section h2 {
+    font-size: 2.5rem;
+    color: #00feba;
+    margin-bottom: 30px;
+  }
+  p {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    font-size: 1.1rem;
+    color: #ccc;
+  }
+  /* Skills container with background images */
+  .skills {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .card {
+    flex: 0 0 280px;
+    background: #1e1e1e;
+    border: 2px solid #00feba;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,255,234,0.3);
+  }
+  .card:hover {
+    transform: scale(1.05);
+    border-color: #5b548a;
+    box-shadow: 0 0 20px #5b548a;
+  }
+  .card h3 {
+    color: #00feba;
+    margin-bottom: 10px;
+  }
+  .card img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #222;
+    padding: 10px;
+  }
+  /* Special backgrounds for AI, Hacker, Thinking skill cards */
+  .skill-ai {
+    background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #e0ffff;
+  }
+  .skill-ai::before {
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0, 255, 234, 0.3);
+    z-index: 0;
+  }
+  .skill-ai > * {
+    position: relative; z-index: 1;
+  }
+  .skill-hacker {
+    background-image: url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=600&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #c1ffc1;
+  }
+  .skill-hacker::before {
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0, 255, 0, 0.2);
+    z-index: 0;
+  }
+  .skill-hacker > * {
+    position: relative; z-index: 1;
+  }
+  .skill-thinking {
+    background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #ffd700;
+  }
+  .skill-thinking::before {
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(255, 215, 0, 0.3);
+    z-index: 0;
+  }
+  .skill-thinking > * {
+    position: relative; z-index: 1;
+  }
+  /* Projects section styling */
+  .projects {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .project-tech {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+  .project-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  /* Blogs section */
+  .blogs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .blog-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  /* Current work & learning section */
+  .current-work {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .current-card {
+    flex: 0 0 320px;
+    background: #1e1e1e;
+    border: 2px solid #00feba;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,255,234,0.3);
+    cursor: default;
+  }
+  .current-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  footer {
+    background: #0f0f0f;
+    color: #999;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 40px;
+  }
+  /* Scrollbar styling */
+  .skills::-webkit-scrollbar,
+  .projects::-webkit-scrollbar,
+  .blogs::-webkit-scrollbar,
+  .current-work::-webkit-scrollbar {
+    height: 8px;
+  }
+  .skills::-webkit-scrollbar-thumb,
+  .projects::-webkit-scrollbar-thumb,
+  .blogs::-webkit-scrollbar-thumb,
+  .current-work::-webkit-scrollbar-thumb {
+    background: #00feba;
+    border-radius: 4px;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav ul {
+      gap: 15px;
+    }
+    .card, .current-card {
+      flex: 0 0 90%;
+    }
+    section {
+      padding: 40px 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Manmohan Sharma</h1>
+  <p>Prompt Engineer | Java Enthusiast | AI Creator</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about" class="active">About Me</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#blogs">Blog</a></li>
+    <li><a href="#current">Current Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m a passionate Computer Science student specializing in Java, DSA, and Prompt Engineering. I create, learn, and innovate through AI prompts and real-world problem-solving.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java Logo" />
+        <h3>Java</h3>
+        <p>Object-Oriented Programming, Core Java, GUI apps</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="DSA Icon" />
+        <h3>DSA</h3>
+        <p>Data Structures and Algorithms through LeetCode and CodeChef</p>
+      </div>
+      <div class="card skill-ai">
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="AI Tools Icon" />
+        <h3>AI Tools</h3>
+        <p>Midjourney, DALL·E, GPTs, Stable Diffusion</p>
+      </div>
+      <div class="card skill-thinking">
+        <img src="https://cdn-icons-png.flaticon.com/512/2838/2838912.png" alt="Prompt Engineering Icon" />
+        <h3>Prompt Engineering</h3>
+        <p>Crafting prompts for ChatGPT, DALL·E, and other LLMs</p>
+      </div>
+      <div class="card skill-hacker">
+        <img src="https://cdn-icons-png.flaticon.com/512/2876/2876510.png" alt="Ethical Hacking Icon" />
+        <h3>Ethical Hacking</h3>
+        <p>Basic penetration testing and security awareness</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <img class="project-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Story Prompting" />
+        <h3>Story Prompting</h3>
+        <p class="project-tech">Java, AI, Natural Language Processing</p>
+        <p>"The Whispering Vines" — a visual + narrated AI short story</p>
+      </div>
+      <div class="card">
+        <img class="project-img" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Image Prompting" />
+        <h3>Image Prompting</h3>
+        <p class="project-tech">Midjourney, DALL·E, Graphic Design</p>
+        <p>Used Midjourney to generate AI profile visuals & brand concepts</p>
+      </div>
+      <div class="card">
+        <img class="project-img" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="AI Assistant Bot" />
+        <h3>AI Assistant Bot</h3>
+        <p class="project-tech">Python, GPT API, Chatbot Development</p>
+        <p>Created an AI chatbot to assist with coding and daily tasks</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blogs">
+    <h2>Blog</h2>
+    <div class="blogs">
+      <div class="card">
+        <h3>Getting Started with Java Streams</h3>
+        <p class="blog-date">June 1, 2025</p>
+        <p>Explore how Java Streams simplify data processing with elegant syntax and functional programming concepts.</p>
+      </div>
+      <div class="card">
+        <h3>Mastering Data Structures for Coding Interviews</h3>
+        <p class="blog-date">May 20, 2025</p>
+        <p>Learn key data structures and algorithms concepts that boost your chances in coding interviews.</p>
+      </div>
+      <div class="card">
+        <h3>Prompt Engineering Tips for Better AI Results</h3>
+        <p class="blog-date">May 5, 2025</p>
+        <p>Discover practical tips and tricks to craft prompts that generate better and more accurate AI outputs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="current">
+    <h2>Currently Working On & Learning</h2>
+    <div class="current-work">
+      <div class="current-card">
+        <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=600&q=80" alt="Software Development" />
+        <h3>Software Development</h3>
+        <p>Building Java applications with focus on scalability and performance.</p>
+      </div>
+      <div class="current-card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="AI Research & Development" />
+        <h3>AI Research & Development</h3>
+        <p>Exploring machine learning models, prompt engineering, and AI creativity.</p>
+      </div>
+      <div class="current-card">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Cloud Computing" />
+        <h3>Cloud Computing</h3>
+        <p>Learning cloud services for scalable deployment of apps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:manmohansharma841214@gmail.com" style="color:#00feba;">manmohansharma841214@gmail.com</a></p>
+    <p>
+      <a href="https://www.linkedin.com/in/manmohan-sharma-7311a636a" target="_blank" style="color:#00feba; font-weight: 600; margin-right: 15px;">LinkedIn</a>
+      <a href="https://x.com/mrityunjay250" target="_blank" style="color:#00feba; font-weight: 600;">x</a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 Manmohan Sharma. Crafted with ⚡ & AI.
+</footer>
+
+<script>
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+      link.classList.add('active');
+      const target = document.querySelector(link.getAttribute('href'));
+      target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
